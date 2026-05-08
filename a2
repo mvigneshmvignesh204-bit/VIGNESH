@@ -1,0 +1,23 @@
+import requests
+import time
+
+def check_price(api_url):
+    # Example using a public crypto API for demonstration
+    response = requests.get(api_url)
+    data = response.json()
+    price = float(data['bitcoin']['usd'])
+    
+    threshold = 60000
+    if price < threshold:
+        print(f"ALARM! Bitcoin is down to ${price}. Buy now!")
+    else:
+        print(f"Current price: ${price}. No action needed.")
+
+# Bitcoin price API
+url = "https://coingecko.com"
+
+# Run every 60 seconds
+while True:
+    check_price(url)
+    time.sleep(60)
+a
