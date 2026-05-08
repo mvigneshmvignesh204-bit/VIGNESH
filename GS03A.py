@@ -1,3 +1,4 @@
 # Solution as follows
 
-print(3 + 4, 2 + 1)
+S = input()
+print(S)

@@ -1,2 +1,8 @@
-a=(3.14*8.9*8.9)
-print(a)
+# Solution as follows
+
+pi = 3.14
+radius = 8.9
+
+area = pi * radius * radius
+
+print(area)
