@@ -1,0 +1,18 @@
+from pypdf import PdfReader, PdfWriter
+
+def add_watermark(input_pdf, output_pdf, watermark_pdf):
+    reader = PdfReader(input_pdf)
+    watermark_reader = PdfReader(watermark_pdf)
+    watermark_page = watermark_reader.pages[0]
+    
+    writer = PdfWriter()
+
+    for page in reader.pages:
+        page.merge_page(watermark_page)
+        writer.add_page(page)
+
+    with open(output_pdf, "wb") as fp:
+        writer.write(fp)
+    print(f"Successfully watermarked {input_pdf}")
+
+# Usage: add_watermark("report.pdf", "report_secured.pdf", "stamp.pdf")
