@@ -1,0 +1,16 @@
+from itertools import permutations
+
+# Read input and split into string S and integer k
+s, k = input().split()
+k = int(k)
+
+# 1. Sort the string first to ensure permutations are generated 
+# in lexicographical order based on character positions.
+sorted_s = sorted(s)
+
+# 2. Generate all permutations of size k
+result = list(permutations(sorted_s, k))
+
+# 3. Join the character tuples into strings and print
+for p in result:
+    print("".join(p))
