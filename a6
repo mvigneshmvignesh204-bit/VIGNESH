@@ -1,0 +1,28 @@
+import csv
+from datetime import datetime
+
+def log_expense(amount, category, description):
+    date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open('expenses.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([date, amount, category, description])
+    print("Expense logged successfully!")
+
+def view_expenses():
+    try:
+        with open('expenses.csv', mode='r') as file:
+            for line in csv.reader(file):
+                print(line)
+    except FileNotFoundError:
+        print("No expenses recorded yet.")
+
+# Simple Menu
+print("1. Add Expense | 2. View All")
+choice = input("> ")
+if choice == "1":
+    amt = input("Amount: ")
+    cat = input("Category (Food/Rent/etc): ")
+    desc = input("Description: ")
+    log_expense(amt, cat, desc)
+else:
+    view_expenses()
